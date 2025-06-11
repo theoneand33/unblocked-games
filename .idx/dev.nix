@@ -12,6 +12,7 @@
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
     pkgs.corepack_latest
+    pkgs.fish
   ];
 
   # Sets environment variables in the workspace
@@ -27,16 +28,16 @@
     previews = {
       enable = true;
       previews = {
-        # web = {
+         web = {
         #   # Example: run "pnpm run dev" with PORT set to IDX's defined port for previews,
         #   # and show it in IDX's web preview panel
-        #   command = ["pnpm" "run" "dev"];
-        #   manager = "web";
-        #   env = {
+           command = ["pnpm" "run" "dev"];
+           manager = "web";
+           env = {
         #     # Environment variables to set for your server
         #     PORT = "$PORT";
-        #   };
-        # };
+           };
+         };
       };
     };
 
