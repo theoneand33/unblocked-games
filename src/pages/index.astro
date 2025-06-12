@@ -9,25 +9,79 @@ const pageTitle = "Unblocked games";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
+        <style>
+            .games-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .game-tile {
+                text-align: center;
+                text-decoration: none;
+            }
+        </style>
     </head>
-    <img
-        src="/games_logo_light.svg"
-        alt="light mode version of the GAMEhub logo"
-        width="300"
-    />
     <body>
-        <h1>{pageTitle}</h1>
-    </body>
-
-    <a href="https://theoneand33.github.io/gun-mayhem-2/">
         <img
-            src="/gm2cover.png"
-            alt="Gun mayhem 2 cover image"
-            width="200"
-            height="150"
-        /><br />
-        Gun mayhem 2
-    </a>
+            src="/games_logo_light.svg"
+            alt="light mode version of the GAMEhub logo"
+            width="300"
+        />
+        <h1>{pageTitle}</h1>
 
+        <div class="games-grid">
+            <a href="/gun-mayhem2" class="game-tile">
+                <img
+                    src="/gm2cover.png"
+                    alt="Gun mayhem 2 cover image"
+                    width="200"
+                    height="150"
+                />
+                <br />
+                Gun Mayhem 2
+            </a>
 
+            <a href="/hobo2" class="game-tile">
+                <img
+                    src="/hobo2cover.jpg"
+                    alt="Hobo 2 cover image"
+                    width="200"
+                    height="150"
+                />
+                <br />
+                Hobo 2
+            </a>
+            <a href="/riddle-school2" class="game-tile">
+                <img
+                    src="/Riddle-School-2_logo.png"
+                    alt="Riddle School 2 cover image"
+                    width="200"
+                    height="150"
+                />
+                <br />
+                Riddle School 2
+            </a>
+            <a href="/vex3" class="game-tile">
+                <img
+                    src="/vex-3cover.jpg"
+                    alt="Vex 3 cover image"
+                    width="200"
+                    height="150"
+                />
+                <br />
+                Vex 3
+            </a>
+            <a href="/vex7" class="game-tile">
+                <img
+                    src="/Vex-7cover.jpg"
+                    alt="Vex 7 cover image"
+                    width="200"
+                    height="150"
+                />
+                <br />
+                Vex 7
+            </a>
+        </div>
+    </body>
 </html>
