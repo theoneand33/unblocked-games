@@ -13,7 +13,8 @@
     # pkgs.nodePackages.nodemon
     pkgs.corepack_latest
     pkgs.fish
-    pkgs.nodejs_22
+    pkgs.nodejs_latest
+    pkgs.astro-language-server
   ];
 
   # Sets environment variables in the workspace
@@ -36,7 +37,7 @@
            manager = "web";
            env = {
         #     # Environment variables to set for your server
-        #     PORT = "$PORT";
+             PORT = "8080";
            };
          };
       };
