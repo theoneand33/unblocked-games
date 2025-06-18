@@ -11,10 +11,10 @@
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
-    pkgs.corepack_latest
     pkgs.fish
     pkgs.nodejs_latest
     pkgs.astro-language-server
+    pkgs.pnpm
   ];
 
   # Sets environment variables in the workspace
@@ -28,12 +28,12 @@
 
     # Enable previews
     previews = {
-      enable = true;
+      enable = false;
       previews = {
          web = {
         #   # Example: run "pnpm run dev" with PORT set to IDX's defined port for previews,
         #   # and show it in IDX's web preview panel
-           command = ["pnpm" "run" "dev"];
+           command = ["pnpm" "run" "dev" "--" "--port" "8080"];
            manager = "web";
            env = {
         #     # Environment variables to set for your server
