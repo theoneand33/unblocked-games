@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tetris</title>
+    </head>
+    <a href="/" style="font-size: 24px">Home</a>
+    <body>
+        <div style="text-align: center">
+            <div
+                id="container"
+                style="border: #ccc 0px solid; height: 100%; width: 100%"
+            ></div>
+            <script src="/ruffle/ruffle.js"></script>
+            <script>
+                window.RufflePlayer = window.RufflePlayer || {};
+                window.addEventListener("load", (event) => {
+                    const ruffle = window.RufflePlayer.newest();
+                    const player = ruffle.createPlayer();
+                    const container = document.getElementById("container");
+                    container.appendChild(player);
+                    player.style.height = "96vh";
+                    player.style.width = "100vw";
+                    player.load("/tetris.swf");
+                });
+            </script>
+        </div>
+    </body>
+</html>
