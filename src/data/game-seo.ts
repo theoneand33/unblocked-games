@@ -546,7 +546,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Webtris",
     "Puzzle",
     "2025",
-    "/images/tetriscover.webp",
+    "/images/webtris-cover.svg",
     false,
     "A modern browser-based Tetris clone with smooth canvas rendering, keyboard controls, and local high scores.",
   ),
