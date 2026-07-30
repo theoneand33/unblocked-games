@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#0f0f23"/>
+  <text x="150" y="52" text-anchor="middle" font-family="monospace" font-size="32" font-weight="bold" fill="#00f0f0" letter-spacing="4">WEBTRIS</text>
+  <rect x="70" y="140" width="20" height="20" fill="#00f0f0" rx="2"/>
+  <rect x="90" y="140" width="20" height="20" fill="#00f0f0" rx="2"/>
+  <rect x="110" y="140" width="20" height="20" fill="#00f0f0" rx="2"/>
+  <rect x="90" y="120" width="20" height="20" fill="#00f0f0" rx="2"/>
+  <rect x="140" y="120" width="20" height="20" fill="#f0a000" rx="2"/>
+  <rect x="160" y="120" width="20" height="20" fill="#f0a000" rx="2"/>
+  <rect x="180" y="120" width="20" height="20" fill="#f0a000" rx="2"/>
+  <rect x="200" y="120" width="20" height="20" fill="#f0a000" rx="2"/>
+  <rect x="160" y="100" width="20" height="20" fill="#f0a000" rx="2"/>
+  <rect x="70" y="80" width="20" height="20" fill="#f000f0" rx="2"/>
+  <rect x="90" y="80" width="20" height="20" fill="#f000f0" rx="2"/>
+  <rect x="110" y="80" width="20" height="20" fill="#f000f0" rx="2"/>
+  <rect x="110" y="60" width="20" height="20" fill="#f000f0" rx="2"/>
+  <rect x="140" y="80" width="20" height="20" fill="#00f000" rx="2"/>
+  <rect x="160" y="80" width="20" height="20" fill="#00f000" rx="2"/>
+  <rect x="180" y="80" width="20" height="20" fill="#00f000" rx="2"/>
+  <rect x="180" y="60" width="20" height="20" fill="#00f000" rx="2"/>
+  <rect x="110" y="160" width="20" height="20" fill="#f00000" rx="2"/>
+  <rect x="130" y="160" width="20" height="20" fill="#f00000" rx="2"/>
+  <rect x="150" y="160" width="20" height="20" fill="#f00000" rx="2"/>
+  <rect x="130" y="140" width="20" height="20" fill="#f00000" rx="2"/>
+  <text x="150" y="190" text-anchor="middle" font-family="monospace" font-size="10" fill="#4a4a6a">webtris</text>
+</svg>

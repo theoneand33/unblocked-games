@@ -548,6 +548,6 @@ export const gamesMap: Record<string, GameSEO> = {
     "2025",
     "/images/webtris-cover.svg",
     false,
-    "A modern browser-based Tetris clone with smooth canvas rendering, keyboard controls, and local high scores.",
+    "A modern browser-based Tetr.io/Tetris clone with smooth canvas rendering, keyboard controls, and local high scores.",
   ),
 };
