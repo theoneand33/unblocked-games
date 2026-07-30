@@ -39,3 +39,4 @@ jobs:
           gh pr comment "$PR_NUMBER" --body "$(cat /tmp/review.md | head -c 30000)"
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
