@@ -33,4 +33,4 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         with:
-          model: openrouter/poolside/laguna-m.1:free
+          model: openrouter/deepseek/deepseek-v4-flash
