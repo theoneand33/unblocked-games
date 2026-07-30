@@ -17,6 +17,8 @@
 - Madness Project Nexus: https://unblocked-games.vercel.app/games/madness-project-nexus
 - Vex 3: https://unblocked-games.vercel.app/games/vex-3
 - Super Mario 63: https://unblocked-games.vercel.app/games/super-mario-63
+- Kingdom Rush: https://unblocked-games.vercel.app/games/kingdom-rush
+- The Binding of Isaac: https://unblocked-games.vercel.app/games/binding-of-isaac
 
 ## All game pages
 - Achievement Unlocked: https://unblocked-games.vercel.app/games/achievement-unlocked
@@ -69,8 +71,43 @@
 - The Impossible Quiz 2: https://unblocked-games.vercel.app/games/the-impossible-quiz-2
 - The World's Hardest Game: https://unblocked-games.vercel.app/games/the-worlds-hardest-game
 - Ultimate Flash Sonic: https://unblocked-games.vercel.app/games/ultimate-flash-sonic
-- Vex 3: https://unblocked-games.vercel.app/games/vex3
+- Vex 3: https://unblocked-games.vercel.app/games/vex-3
 - Webtris: https://unblocked-games.vercel.app/games/webtris
+- Age of War 2: https://unblocked-games.vercel.app/games/age-of-war-2
+- Bloons TD 1: https://unblocked-games.vercel.app/games/bloons-td-1
+- Bloons TD 2: https://unblocked-games.vercel.app/games/bloons-td-2
+- Bloons TD 3: https://unblocked-games.vercel.app/games/bloons-td-3
+- Bloons TD 4: https://unblocked-games.vercel.app/games/bloons-td-4
+- Crush the Castle 2: https://unblocked-games.vercel.app/games/crush-the-castle-2
+- Desktop Tower Defense: https://unblocked-games.vercel.app/games/desktop-tower-defense
+- Epic Battle Fantasy 3: https://unblocked-games.vercel.app/games/epic-battle-fantasy-3
+- Epic Battle Fantasy 5: https://unblocked-games.vercel.app/games/epic-battle-fantasy-5
+- Fireboy and Watergirl 2: Light Temple: https://unblocked-games.vercel.app/games/fireboy-and-watergirl-2
+- Fireboy and Watergirl 3: Ice Temple: https://unblocked-games.vercel.app/games/fireboy-and-watergirl-3
+- Fireboy and Watergirl 4: Crystal Temple: https://unblocked-games.vercel.app/games/fireboy-and-watergirl-4
+- GemCraft: https://unblocked-games.vercel.app/games/gemcraft
+- Infectonator: https://unblocked-games.vercel.app/games/infectonator
+- Infectonator 2: https://unblocked-games.vercel.app/games/infectonator-2
+- Infectonator: Hot Chase: https://unblocked-games.vercel.app/games/infectonator-hot-chase
+- Infectonator: Survivors: https://unblocked-games.vercel.app/games/infectonator-survivors
+- Kingdom Rush: https://unblocked-games.vercel.app/games/kingdom-rush
+- Knightmare Tower: https://unblocked-games.vercel.app/games/knightmare-tower
+- Meat Boy: https://unblocked-games.vercel.app/games/meat-boy
+- Monster's Den: Book of Dread: https://unblocked-games.vercel.app/games/monsters-den
+- Mutilate a Doll 2: https://unblocked-games.vercel.app/games/mutilate-a-doll-2
+- Onslaught: https://unblocked-games.vercel.app/games/onslaught
+- Raze 2: https://unblocked-games.vercel.app/games/raze-2
+- Sonny: https://unblocked-games.vercel.app/games/sonny
+- Sonny 2: https://unblocked-games.vercel.app/games/sonny-2
+- Stick War 2: Warrior: https://unblocked-games.vercel.app/games/stick-war-2
+- Swords and Sandals 3: Crusader: https://unblocked-games.vercel.app/games/swords-and-sandals-3
+- The Binding of Isaac (Flash): https://unblocked-games.vercel.app/games/binding-of-isaac
+- The Impossible Quiz: https://unblocked-games.vercel.app/games/the-impossible-quiz
+- The Last Stand: https://unblocked-games.vercel.app/games/the-last-stand
+- The Last Stand 2: https://unblocked-games.vercel.app/games/the-last-stand-2
+- The Last Stand: Union City: https://unblocked-games.vercel.app/games/the-last-stand-union-city
+- Thing Thing: https://unblocked-games.vercel.app/games/thing-thing
+- Warfare 1917: https://unblocked-games.vercel.app/games/warfare-1917
 
 ## About
 Superfun Games provides free unblocked access to classic Flash games and browser games that are no longer playable through normal means since Adobe Flash was discontinued in 2020. All Flash games run through the Ruffle emulator, which is a WebAssembly-based Flash Player replacement that works in modern browsers without any plugins or downloads.
