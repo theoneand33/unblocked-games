@@ -8,20 +8,34 @@ jobs:
   opencode-review:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
       contents: read
       pull-requests: write
-      issues: write
-      actions: read
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
+          fetch-depth: 0
 
-      - name: Run opencode
-        uses: anomalyco/opencode/github@latest
+      - name: Install opencode
+        run: curl -fsSL https://opencode.ai/install | bash
+
+      - name: Review PR
+        run: |
+          export PATH="$HOME/.opencode/bin:$PATH"
+          PR_NUMBER=$(jq -r '.pull_request.number' "$GITHUB_EVENT_PATH")
+          PR_TITLE=$(gh pr view "$PR_NUMBER" --json title --jq '.title')
+          gh pr diff "$PR_NUMBER" > /tmp/pr.diff
+
+          echo "Review pull request #$PR_NUMBER: $PR_TITLE" > /tmp/prompt.md
+          echo "" >> /tmp/prompt.md
+          echo '```diff' >> /tmp/prompt.md
+          head -c 100000 /tmp/pr.diff >> /tmp/prompt.md
+          echo '```' >> /tmp/prompt.md
+          echo "" >> /tmp/prompt.md
+          echo "Find bugs, security issues, and quality problems. Be concise." >> /tmp/prompt.md
+
+          opencode run --model openrouter/deepseek/deepseek-v4-flash "$(cat /tmp/prompt.md)" > /tmp/review.md
+
+          gh pr comment "$PR_NUMBER" --body "$(cat /tmp/review.md | head -c 30000)"
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        with:
-          model: openrouter/deepseek/deepseek-v4-flash
