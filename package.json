@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && bunx pagefind --site dist",
+    "build": "git lfs pull && astro build && bunx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check && astro build && bunx pagefind --site dist",
+    "check": "git lfs pull && astro check && astro build && bunx pagefind --site dist",
     "lint": "prettier --check ."
   },
   "dependencies": {
