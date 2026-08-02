@@ -12,7 +12,7 @@ from pathlib import Path
 
 import requests
 
-IMAGES_DIR = Path("/home/noah/unblocked-games/public/images")
+IMAGES_DIR = Path(__file__).resolve().parent.parent / "public" / "images"
 
 # (target_filename, ia_identifier, image_filename, description)
 # image_filename=None means "auto-detect best"
@@ -54,7 +54,7 @@ GAMES = [
     ("binding-of-isaac-cover.webp", "the-binding-of-isaac_202111", "00_coverscreenshot.png", "The Binding of Isaac"),
     ("meatboy-cover.webp", "flash_meatboy", "flash_meatboy_screenshot.png", "Meat Boy"),
     ("onslaught-cover.webp", "onslaught2_202311", "00_coverscreenshot.png", "Onslaught"),
-    ("monsters-den-cover.webp", None, None, "Monster's Den: Book of Dread"),
+    ("monsters-den-cover.webp", "monsters-den-book-of-dread", "00_coverscreenshot.png", "Monster's Den: Book of Dread"),
 ]
 
 
