@@ -42,7 +42,7 @@ GAMES = [
     ("stick-war-2-cover.webp", "stick-war-2-remix-part-1-official-public-v-1.22", "00_coverscreenshot.png", "Stick War 2"),
     ("raze-2-cover.webp", "raze-2", "00_coverscreenshot.png", "Raze 2"),
     ("swords-and-sandals-3-cover.webp", "swords-and-sandals-3-solo-flash", "00_coverscreenshot.png", "Swords and Sandals 3"),
-    ("the-impossible-quiz-cover.webp", "tiq2_swf", "00_coverscreenshot.png", "The Impossible Quiz"),
+    ("the-impossible-quiz-cover.webp", "the-impossible-quiz", "__ia_thumb", "The Impossible Quiz"),
     ("crush-the-castle-2-cover.webp", "crush-the-castle-flash-game-series", "CrushtheCastle2-menu.png", "Crush the Castle 2"),
     ("infectonator-cover.webp", "infectonator-flash-game-series.", "Infectonator_menu_v1.5.png", "Infectonator"),
     ("infectonator-2-cover.webp", "infectonator-flash-game-series.", "infectonator2_main_menu_v1.5.png", "Infectonator 2"),
@@ -59,6 +59,7 @@ GAMES = [
 
 
 def download_and_convert(img_url, output_path):
+    tmp_path = None
     try:
         resp = requests.get(img_url, timeout=30, stream=True)
         if resp.status_code != 200:
@@ -82,11 +83,13 @@ def download_and_convert(img_url, output_path):
             ],
             capture_output=True, timeout=30,
         )
-        os.unlink(tmp_path)
         return result.returncode == 0
     except Exception as e:
         print(f"    convert error: {e}", file=sys.stderr)
         return False
+    finally:
+        if tmp_path:
+            os.unlink(tmp_path)
 
 
 def main():

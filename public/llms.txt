@@ -90,7 +90,6 @@
 - Infectonator 2: https://unblocked-games.vercel.app/games/infectonator-2
 - Infectonator: Hot Chase: https://unblocked-games.vercel.app/games/infectonator-hot-chase
 - Infectonator: Survivors: https://unblocked-games.vercel.app/games/infectonator-survivors
-- Kingdom Rush: https://unblocked-games.vercel.app/games/kingdom-rush
 - Knightmare Tower: https://unblocked-games.vercel.app/games/knightmare-tower
 - Meat Boy: https://unblocked-games.vercel.app/games/meat-boy
 - Monster's Den: Book of Dread: https://unblocked-games.vercel.app/games/monsters-den
@@ -101,7 +100,6 @@
 - Sonny 2: https://unblocked-games.vercel.app/games/sonny-2
 - Stick War 2: Warrior: https://unblocked-games.vercel.app/games/stick-war-2
 - Swords and Sandals 3: Crusader: https://unblocked-games.vercel.app/games/swords-and-sandals-3
-- The Binding of Isaac (Flash): https://unblocked-games.vercel.app/games/binding-of-isaac
 - The Impossible Quiz: https://unblocked-games.vercel.app/games/the-impossible-quiz
 - The Last Stand: https://unblocked-games.vercel.app/games/the-last-stand
 - The Last Stand 2: https://unblocked-games.vercel.app/games/the-last-stand-2
