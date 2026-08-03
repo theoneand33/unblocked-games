@@ -119,6 +119,8 @@ def main():
             success += 1
         else:
             print("FAILED")
+            if output_path.exists():
+                output_path.unlink()
             failed += 1
 
     print(f"\nDone: {success} succeeded, {failed} failed, {skipped} skipped")
