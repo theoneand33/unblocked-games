@@ -33,7 +33,7 @@ GAMES = [
     ("epic-battle-fantasy-5-cover.webp", "epic-battle-fantasy-5-v1.5.4.", "EBF5_Main_Menu_v1.5.4.png", "Epic Battle Fantasy 5"),
     ("gemcraft-cover.webp", "gemcraft-1716", "gemcraft-1716_screenshot.jpg", "GemCraft"),
     ("kingdom-rush-cover.webp", "kingdom-rush-frontie-15717", "00_coverscreenshot.png", "Kingdom Rush"),
-    ("the-last-stand-cover.webp", "the-last-stand-union-city", "00_coverscreenshot.png", "The Last Stand"),
+    ("the-last-stand-cover.webp", "the-last-stand", "00_coverscreenshot.png", "The Last Stand"),
     ("the-last-stand-2-cover.webp", "the-last-stand-2", "00_coverscreenshot.png", "The Last Stand 2"),
     ("the-last-stand-union-city-cover.webp", "the-last-stand-union-city", "00_coverscreenshot.png", "The Last Stand: Union City"),
     ("desktop-tower-defense-cover.webp", "desktop-tower-defence_flash", "00_coverscreenshot.png", "Desktop Tower Defense"),
