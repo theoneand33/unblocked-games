@@ -865,4 +865,13 @@ export const gamesMap: Record<string, GameSEO> = {
     "Explore dungeons, fight monsters, and loot treasure in this turn-based RPG.",
     "/flash/monsters-den.swf",
   ),
+  "clicker-heroes": seo(
+    "Clicker Heroes",
+    "Idle / Clicker",
+    "2014",
+    "/images/clicker-heroes-cover.webp",
+    true,
+    "Click, hire heroes, and defeat monsters in the idle RPG that started the genre.",
+    "/flash/clickerheroes.swf",
+  ),
 };
