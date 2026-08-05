@@ -37,7 +37,7 @@ Run these **before** committing. If either fails, fix the issues before proceedi
 │   │   ├── index.astro        Home page — lists all games via <Gametile> components
 │   │   ├── dmca.astro         DMCA takedown notice page
 │   │   └── games/
-│   │       ├── webtris.astro  HTML5 game page (Tetris clone)
+│   │       ├── webtris.astro  Iframe game page (Tetris clone)
 │   │       ├── [slug].astro   Dynamic route for all Flash games (56 games)
 │   │       └── run-3.astro    HTML5 game page (Run 3 — unique template)
 │   └── styles/
