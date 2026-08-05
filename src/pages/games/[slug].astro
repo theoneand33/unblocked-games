@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layout/layout.astro";
 import Flash from "../../components/flash.astro";
+import FullscreenButton from "../../components/fullscreen-button.astro";
 import { gamesMap } from "../../data/game-seo";
 
 export async function getStaticPaths() {
@@ -14,5 +15,6 @@ const seo = gamesMap[slug];
 ---
 
 <Layout slug={slug}>
+  <FullscreenButton kind="flash" gamePath={seo.gamePath || ""} title={seo.title} />
   <Flash gamePath={seo.gamePath || ""} />
 </Layout>
