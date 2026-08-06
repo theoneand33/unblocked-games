@@ -75,7 +75,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Navigate mazes, eat pellets, and avoid ghosts in the 1980 arcade legend.",
     "/flash/pacman.swf",
   ),
-  tetris: seo(
+  "tetris": seo(
     "Tetris",
     "Puzzle",
     "1984",
@@ -380,7 +380,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "120 mind-bending trick questions that will frustrate and delight you.",
     "/flash/theimpossiblequiz2.swf",
   ),
-  qwop: seo(
+  "qwop": seo(
     "QWOP",
     "Physics / Sports",
     "2008",
@@ -497,7 +497,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Race through levels at high speed, collect rings, and defeat Dr. Eggman.",
     "/flash/ultimate-flash-sonic.swf",
   ),
-  doom: seo(
+  "doom": seo(
     "Doom",
     "Action / FPS",
     "1993",
@@ -506,7 +506,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Fight demons, collect weapons, and survive the onslaught in the FPS that defined a genre.",
     "/flash/doom.swf",
   ),
-  minesweeper: seo(
+  "minesweeper": seo(
     "Minesweeper",
     "Puzzle / Logic",
     "1990",
@@ -542,7 +542,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "New weapons, armor, magic upgrades, and fiercer opponents in the gladiator sequel.",
     "/flash/swords-and-sandals-2.swf",
   ),
-  webtris: seo(
+  "webtris": seo(
     "Webtris",
     "Puzzle",
     "2025",
@@ -613,7 +613,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Navigate the Crystal Temple with portals and new puzzle elements.",
     "/flash/fireboy-watergirl-4.swf",
   ),
-  sonny: seo(
+  "sonny": seo(
     "Sonny",
     "RPG / Strategy",
     "2008",
@@ -649,7 +649,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "The biggest EBF yet with massive explorable areas, hundreds of enemies, and epic loot.",
     "/flash/epic-battle-fantasy-5.swf",
   ),
-  gemcraft: seo(
+  "gemcraft": seo(
     "GemCraft",
     "Tower Defense",
     "2008",
@@ -802,7 +802,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "New siege weapons, destructible structures, and more castle-crushing physics fun.",
     "/flash/crush-the-castle-2.swf",
   ),
-  infectonator: seo(
+  "infectonator": seo(
     "Infectonator",
     "Strategy / Simulation",
     "2008",
@@ -847,7 +847,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Command WWI troops through trench warfare with machine guns, artillery, and gas attacks.",
     "/flash/warfare-1917.swf",
   ),
-  onslaught: seo(
+  "onslaught": seo(
     "Onslaught",
     "Tower Defense",
     "2008",
