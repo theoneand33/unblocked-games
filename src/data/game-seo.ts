@@ -61,7 +61,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "Bloons TD 5",
     "Tower Defense",
     "2011",
-    "/images/bloonstd5cover.webp",
+    "/images/bloonstd5cover.png",
     true,
     "Pop colorful balloons with monkey towers in the ultimate tower defense game.",
     "/flash/bloonstd5.swf",
