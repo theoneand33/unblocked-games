@@ -5,7 +5,6 @@
     "": {
       "name": "unblocked-games",
       "dependencies": {
-        "@astrojs/check": "^0.9.10",
         "@astrojs/sitemap": "^3.7.3",
         "@tailwindcss/vite": "^4.3.3",
         "astro": "7.1.6",
@@ -14,6 +13,7 @@
         "typescript": "^7.0.2",
       },
       "devDependencies": {
+        "@astrojs/check": "^0.9.10",
         "pagefind": "^1.5.2",
         "prettier": "^3.9.6",
         "prettier-plugin-tailwindcss": "^0.8.1",
