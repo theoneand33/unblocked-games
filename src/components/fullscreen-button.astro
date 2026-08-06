@@ -15,57 +15,23 @@ const { kind, gamePath = "", title } = Astro.props;
     data-kind={kind}
     data-path={gamePath}
     data-title={title}
+    aria-label={`Open ${title} in fullscreen mode`}
     class="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded transition-colors"
   >
-    ⛶ Fullscreen
+    Fullscreen
   </button>
 </div>
 
-<script is:inline>
-  (function () {
-    var btn = document.getElementById("fullscreen-btn");
-    if (!btn) return;
+<script>
+  import { openFullscreen } from "../lib/fullscreen";
 
-    btn.addEventListener("click", function () {
-      var kind = btn.getAttribute("data-kind");
-      var path = btn.getAttribute("data-path") || "";
-      var title = btn.getAttribute("data-title") || "";
-
-      var html;
-      if (kind === "html5") {
-        html = [
-          "<!DOCTYPE html><html><head>",
-          '<meta charset="utf-8"><title>' + title + "</title>",
-          '<base href="/games/run3/">',
-          "<style>html,body{margin:0;height:100%;background:#000}#openfl-content{position:fixed;inset:0}</style>",
-          '</head><body><div id="openfl-content"></div>',
-          '<script src="/games/run3/Run3.js"><' + "/script>",
-          "<script>",
-          "window.addEventListener('touchmove',function(e){e.preventDefault();},{passive:false});",
-          "function ready(){",
-          "var el=document.getElementById('openfl-content');",
-          "if(el&&typeof lime!=='undefined'&&lime.embed){lime.embed('Run3','openfl-content',800,600,{parameters:{}});}",
-          "else{setTimeout(ready,200);}",
-          "}",
-          "ready();",
-          "<" + "/script>",
-          "</body></html>",
-        ].join("");
-      } else {
-        html = [
-          "<!DOCTYPE html><html><head>",
-          '<meta charset="utf-8"><title>' + title + "</title>",
-          "<style>html,body{margin:0;height:100%;overflow:hidden;background:#000}#wrap{position:fixed;inset:0}</style>",
-          '</head><body><div id="wrap"><ruffle-player src="' + path + '" style="width:100%;height:100%"></ruffle-player></div>',
-          '<script src="/ruffle/ruffle.js"><' + "/script>",
-          "</body></html>",
-        ].join("");
-      }
-
-      var win = window.open("", "_blank");
-      if (!win) return;
-      win.document.write(html);
-      win.document.close();
-    });
-  })();
+  const btn = document.getElementById("fullscreen-btn");
+  btn?.addEventListener("click", () => {
+    const kind = btn.getAttribute("data-kind") === "html5" ? "html5" : "flash";
+    openFullscreen(
+      kind,
+      btn.getAttribute("data-path") || "",
+      btn.getAttribute("data-title") || "",
+    );
+  });
 </script>

@@ -14,32 +14,8 @@ import FullscreenButton from "../../components/fullscreen-button.astro";
   </div>
 
   <script src="/games/run3/Run3.js" is:inline></script>
-  <script data-astro-rerun is:inline>
-    (function () {
-      // Lime/OpenFL touch & viewport setup
-      window.addEventListener("touchmove", function (event) {
-        event.preventDefault();
-      }, { capture: false, passive: false });
-
-      // Embed the game once the DOM is ready
-      var ready = function () {
-        var el = document.getElementById("openfl-content");
-        if (el && typeof lime !== "undefined" && lime.embed) {
-          try {
-            lime.embed("Run3", "openfl-content", 800, 600, { parameters: {} });
-          } catch (e) {
-            console.error("Run3 embed failed:", e);
-          }
-        } else {
-          setTimeout(ready, 200);
-        }
-      };
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", ready);
-      } else {
-        ready();
-      }
-    })();
+  <script>
+    import { embedRun3 } from "../../lib/fullscreen";
+    embedRun3("openfl-content");
   </script>
 </Layout>
