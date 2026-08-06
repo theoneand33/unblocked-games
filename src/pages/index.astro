@@ -148,21 +148,25 @@ const games = [
     <a href="/games/madness-project-nexus" class="text-blue-600 hover:underline"
       >Madness: Project Nexus</a
     >
-    <a href="/games/tetris" class="text-blue-600 hover:underline"
-      >Tetris</a
-    >
-    <a href="/games/pac-man" class="text-blue-600 hover:underline"
-      >Pac-Man</a
-    >
+    <a href="/games/tetris" class="text-blue-600 hover:underline">Tetris</a>
+    <a href="/games/pac-man" class="text-blue-600 hover:underline">Pac-Man</a>
     <a href="/games/kingdom-rush" class="text-blue-600 hover:underline"
       >Kingdom Rush</a
     >
   </div>
 
   <div class="games-grid">
-    {games.map((slug, i) => {
-      const seo = gamesMap[slug];
-      return <Gametile Game={seo.title} Path={"/games/" + slug} Image={seo.image} priority={i === 0} />;
-    })}
+    {
+      games.map((slug) => {
+        const seo = gamesMap[slug];
+        return (
+          <Gametile
+            Game={seo.title}
+            Path={"/games/" + slug}
+            Image={seo.image}
+          />
+        );
+      })
+    }
   </div>
 </Layout>

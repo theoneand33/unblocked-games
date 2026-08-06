@@ -3,12 +3,9 @@ interface Props {
   Game: string;
   Path: string;
   Image: string;
-  priority?: boolean;
 }
-const { Game, Path, Image, priority } = Astro.props;
+const { Game, Path, Image } = Astro.props;
 const altText = `${Game} cover image`;
-const loading = priority ? "eager" : "lazy";
-const fetchpriority = priority ? "high" : undefined;
 ---
 
 <a href={Path} data-astro-prefetch class="game-tile">
@@ -17,9 +14,8 @@ const fetchpriority = priority ? "high" : undefined;
     alt={altText}
     width="300"
     height="200"
-    loading={loading}
+    loading="lazy"
     decoding="async"
-    fetchpriority={fetchpriority}
     class="cover-img rounded-xl hover:scale-105 transition-transform duration-300 hover:shadow-lg active:scale-95 transform"
   />
   <p class="hover:text-black text-gray-800 transition-colors">{Game}</p>
