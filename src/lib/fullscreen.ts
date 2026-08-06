@@ -46,10 +46,22 @@ export function buildPopupHtml(
     "<!DOCTYPE html><html><head>",
     '<meta charset="utf-8"><title>' + title + "</title>",
     "<style>html,body{margin:0;height:100%;overflow:hidden;background:#000}#wrap{position:fixed;inset:0}</style>",
-    '</head><body><div id="wrap"><ruffle-player src="' +
-      gamePath +
-      '" style="width:100%;height:100%"></ruffle-player></div>',
+    '</head><body><div id="wrap"></div>',
     '<script src="/ruffle/ruffle.js"><' + "/script>",
+    "<script>",
+    "function ready(){",
+    "var wrap=document.getElementById('wrap');",
+    "var r=window.RufflePlayer;",
+    "var ruff=(r&&typeof r.newest==='function')?r.newest():null;",
+    "if(wrap&&ruff&&typeof ruff.createPlayer==='function'){",
+    "var p=ruff.createPlayer();",
+    "p.style.width='100%';p.style.height='100%';",
+    "wrap.appendChild(p);",
+    "p.load('" + gamePath + "');",
+    "}else{setTimeout(ready,200);}",
+    "}",
+    "ready();",
+    "<" + "/script>",
     "</body></html>",
   ].join("");
 }
