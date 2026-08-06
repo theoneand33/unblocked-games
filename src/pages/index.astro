@@ -1,108 +1,12 @@
 ---
 import Layout from "../layout/layout.astro";
 import Gametile from "../components/gametile.astro";
-import { gamesMap } from "../data/game-seo";
+import { gamesMap, defaultGames } from "../data/game-seo";
 
 const pageTitle =
   "Superfun Games - Unblocked Games for School Chromebook | No Flash Required (2026)";
 
-// ponytail: ordered by popularity — series grouped contiguously
-const games = [
-  "happy-wheels",
-  "plants-vs-zombies",
-  "run-3",
-  "fireboy-and-watergirl",
-  "fireboy-and-watergirl-2",
-  "fireboy-and-watergirl-3",
-  "fireboy-and-watergirl-4",
-  "bloons-td-5",
-  "bloons-td-4",
-  "bloons-td-3",
-  "bloons-td-2",
-  "bloons-td-1",
-  "super-mario-63",
-  "tetris",
-  "pac-man",
-  "kingdom-rush",
-  "binding-of-isaac",
-  "run-2",
-  "fancy-pants-adventure",
-  "stick-war",
-  "stick-war-2",
-  "age-of-war",
-  "age-of-war-2",
-  "madness-project-nexus",
-  "strike-force-heroes",
-  "the-worlds-hardest-game",
-  "vex-3",
-  "gun-mayhem-2",
-  "bubble-trouble",
-  "qwop",
-  "clicker-heroes",
-  "crush-the-castle",
-  "crush-the-castle-2",
-  "burrito-bison",
-  "boxhead-2play",
-  "the-impossible-quiz-2",
-  "the-impossible-quiz",
-  "interactive-buddy",
-  "achievement-unlocked",
-  "ultimate-flash-sonic",
-  "sonny",
-  "sonny-2",
-  "epic-battle-fantasy-3",
-  "epic-battle-fantasy-5",
-  "gemcraft",
-  "desktop-tower-defense",
-  "the-last-stand",
-  "the-last-stand-2",
-  "the-last-stand-union-city",
-  "knightmare-tower",
-  "raze-2",
-  "meat-boy",
-  "infectonator",
-  "infectonator-2",
-  "infectonator-hot-chase",
-  "infectonator-survivors",
-  "warfare-1917",
-  "mutilate-a-doll-2",
-  "thing-thing",
-  "onslaught",
-  "monsters-den",
-  "doom",
-  "minesweeper",
-  "webtris",
-  "geography-game-usa",
-  "breaking-the-bank",
-  "escaping-the-prison",
-  "stealing-the-diamond",
-  "infiltrating-the-airship",
-  "fleeing-the-complex",
-  "duck-life",
-  "duck-life-2",
-  "duck-life-3",
-  "duck-life-4",
-  "duck-life-5",
-  "learn-to-fly-2",
-  "learn-to-fly-3",
-  "super-mario-flash",
-  "super-mario-flash-2",
-  "swords-and-sandals",
-  "swords-and-sandals-2",
-  "swords-and-sandals-3",
-  "riddle-school-2",
-  "riddle-school-3",
-  "riddle-school-4",
-  "riddle-school-5",
-  "hobo-1-brawl",
-  "hobo-2",
-  "hobo-3-wanted",
-  "hobo-4-total-war",
-  "hobo-5-space-brawls",
-  "hobo-6-hell",
-  "hobo-7",
-  "hobo-vs-zombies",
-];
+const popularGames = defaultGames.slice(0, 11);
 ---
 
 <Layout pageTitle={pageTitle} isHome={true}>
@@ -126,38 +30,18 @@ const games = [
 
   <div class="flex flex-wrap gap-2 m-5 mb-4 text-sm">
     <span class="font-semibold text-gray-700">Popular:</span>
-    <a href="/games/happy-wheels" class="text-blue-600 hover:underline"
-      >Happy Wheels</a
-    >
-    <a href="/games/plants-vs-zombies" class="text-blue-600 hover:underline"
-      >Plants vs Zombies</a
-    >
-    <a href="/games/run-3" class="text-blue-600 hover:underline">Run 3</a>
-    <a href="/games/fireboy-and-watergirl" class="text-blue-600 hover:underline"
-      >Fireboy and Watergirl</a
-    >
-    <a href="/games/bloons-td-5" class="text-blue-600 hover:underline"
-      >Bloons TD 5</a
-    >
-    <a href="/games/super-mario-63" class="text-blue-600 hover:underline"
-      >Super Mario 63</a
-    >
-    <a href="/games/strike-force-heroes" class="text-blue-600 hover:underline"
-      >Strike Force Heroes</a
-    >
-    <a href="/games/madness-project-nexus" class="text-blue-600 hover:underline"
-      >Madness: Project Nexus</a
-    >
-    <a href="/games/tetris" class="text-blue-600 hover:underline">Tetris</a>
-    <a href="/games/pac-man" class="text-blue-600 hover:underline">Pac-Man</a>
-    <a href="/games/kingdom-rush" class="text-blue-600 hover:underline"
-      >Kingdom Rush</a
-    >
+    {
+      popularGames.map((slug) => (
+        <a href={"/games/" + slug} class="text-blue-600 hover:underline"
+          >{gamesMap[slug].title}</a
+        >
+      ))
+    }
   </div>
 
   <div class="games-grid">
     {
-      games.map((slug) => {
+      defaultGames.map((slug) => {
         const seo = gamesMap[slug];
         return (
           <Gametile

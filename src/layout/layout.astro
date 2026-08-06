@@ -1,6 +1,6 @@
 ---
 import "../styles/styles.css";
-import { gamesMap } from "../data/game-seo";
+import { gamesMap, defaultGames } from "../data/game-seo";
 
 interface Props {
   slug?: string;
@@ -49,17 +49,7 @@ const gameKeywords = isHome
 const pageUrl = slug ? `${siteUrl}/games/${slug}` : siteUrl;
 
 // More Games cross-linking — curated list of popular games
-const moreGames = [
-  "happy-wheels",
-  "gun-mayhem-2",
-  "madness-project-nexus",
-  "hobo-2",
-  "vex-3",
-  "fireboy-and-watergirl",
-  "strike-force-heroes",
-  "super-mario-63",
-  "bloons-td-5",
-].filter((s) => s !== slug); // exclude current game
+const moreGames = defaultGames.slice(0, 9).filter((s) => s !== slug); // exclude current game
 ---
 
 <html lang="en">
