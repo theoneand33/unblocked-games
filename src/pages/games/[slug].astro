@@ -4,9 +4,7 @@ import Flash from "../../components/flash.astro";
 import { gamesMap } from "../../data/game-seo";
 
 export async function getStaticPaths() {
-  return Object.keys(gamesMap)
-    .filter((slug) => gamesMap[slug].isFlash)
-    .map((slug) => ({ params: { slug } }));
+  return Object.keys(gamesMap).map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params!;
@@ -14,5 +12,51 @@ const seo = gamesMap[slug];
 ---
 
 <Layout slug={slug}>
-  <Flash gamePath={seo.gamePath || ""} />
+  {
+    seo.isFlash ? (
+      <Flash gamePath={seo.gamePath || ""} />
+    ) : slug === "run-3" ? (
+      <>
+        <base href="/games/run3/" />
+        <div id="run3-wrapper" class="text-center h-[96vh] w-full">
+          <div id="openfl-content" class="bg-black w-full h-full" />
+        </div>
+        <script src="/games/run3/Run3.js" is:inline />
+        <script data-astro-rerun is:inline>
+          {`(function () {
+          window.addEventListener("touchmove", function (event) {
+            event.preventDefault();
+          }, { capture: false, passive: false });
+          var ready = function () {
+            var el = document.getElementById("openfl-content");
+            if (el && typeof lime !== "undefined" && lime.embed) {
+              try {
+                lime.embed("Run3", "openfl-content", 800, 600, { parameters: {} });
+              } catch (e) {
+                console.error("Run3 embed failed:", e);
+              }
+            } else {
+              setTimeout(ready, 200);
+            }
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", ready);
+          } else {
+            ready();
+          }
+        })();`}
+        </script>
+      </>
+    ) : slug === "webtris" ? (
+      <div class="flex justify-center items-center min-h-[80vh] bg-[#010101]">
+        <iframe
+          src="https://theoneand33.github.io/webtris/"
+          class="w-full max-w-[90vw] h-[80vh] border-0"
+          title="Webtris"
+        />
+      </div>
+    ) : (
+      <p class="p-6 text-center text-gray-600">Game not available.</p>
+    )
+  }
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import "../styles/styles.css";
-import { gamesMap, defaultGames } from "../data/game-seo";
+import { gamesMap, defaultGames, MORE_GAMES_COUNT } from "../data/game-seo";
 
 interface Props {
   slug?: string;
@@ -15,7 +15,8 @@ const siteUrl = "https://unblocked-games.vercel.app";
 const seo = slug ? gamesMap[slug] : undefined;
 const Game = seo?.title;
 const isFlash = seo?.isFlash ?? false;
-const todayDate = new Date().toISOString().split('T')[0];
+const todayDate = new Date().toISOString().split("T")[0];
+const jsonLD = (data: unknown) => JSON.stringify(data).replace(/</g, "\\u003c");
 
 // Title
 const gameTitle = Game
@@ -49,7 +50,7 @@ const gameKeywords = isHome
 const pageUrl = slug ? `${siteUrl}/games/${slug}` : siteUrl;
 
 // More Games cross-linking — curated list of popular games
-const moreGames = defaultGames.slice(0, 9).filter((s) => s !== slug); // exclude current game
+const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== slug); // exclude current game
 ---
 
 <html lang="en">
@@ -95,9 +96,10 @@ const moreGames = defaultGames.slice(0, 9).filter((s) => s !== slug); // exclude
       Game && !isHome ? (
         <>
           <!-- JSON-LD BreadcrumbList -->
-          <script is:inline
+          <script
+            is:inline
             type="application/ld+json"
-            set:html={JSON.stringify({
+            set:html={jsonLD({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
@@ -105,40 +107,35 @@ const moreGames = defaultGames.slice(0, 9).filter((s) => s !== slug); // exclude
                 { "@type": "ListItem", position: 2, name: "Games", item: siteUrl },
                 { "@type": "ListItem", position: 3, name: Game, item: pageUrl },
               ],
-            }).replace(/</g, "\\u003c")}
+            })}
           />
           <!-- JSON-LD VideoGame -->
-          <script is:inline
+          <script
+            is:inline
             type="application/ld+json"
-            set:html={(() => {
-              const data = {
-                "@context": "https://schema.org",
-                "@type": "VideoGame",
-                name: Game,
-                description: gameDescription,
-                image: `${siteUrl}${gameImage}`,
-                url: pageUrl,
-                genre: gameGenre,
-                gamePlatform: "Web Browser",
-                operatingSystem: "All (including Chrome OS / Chromebook)",
-                browserRequirements:
-                  "Works in all modern browsers including Chrome on Chromebook",
-                author: { "@type": "Organization", name: "Superfun Games" },
-                offers: {
-                  "@type": "Offer",
-                  price: "0",
-                  priceCurrency: "USD",
-                  availability: "https://schema.org/InStock",
-                },
-                applicationCategory: "GameApplication",
-                dateModified: todayDate,
-                ...(gameYear ? { datePublished: gameYear } : {}),
-                ...(isFlash
-                  ? { requirements: "No Flash plugin needed - runs via Ruffle emulator" }
-                  : {}),
-              };
-              return JSON.stringify(data).replace(/</g, "\\u003c");
-            })()}
+            set:html={jsonLD({
+              "@context": "https://schema.org",
+              "@type": "VideoGame",
+              name: Game,
+              description: gameDescription,
+              image: `${siteUrl}${gameImage}`,
+              url: pageUrl,
+              genre: gameGenre,
+              gamePlatform: "Web Browser",
+              operatingSystem: "All (including Chrome OS / Chromebook)",
+              browserRequirements: "Works in all modern browsers including Chrome on Chromebook",
+              author: { "@type": "Organization", name: "Superfun Games" },
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+              },
+              applicationCategory: "GameApplication",
+              dateModified: todayDate,
+              ...(gameYear ? { datePublished: gameYear } : {}),
+              ...(isFlash ? { requirements: "No Flash plugin needed - runs via Ruffle emulator" } : {}),
+            })}
           />
         </>
       ) : null
@@ -148,37 +145,50 @@ const moreGames = defaultGames.slice(0, 9).filter((s) => s !== slug); // exclude
       isHome ? (
         <>
           <!-- JSON-LD WebSite -->
-          <script is:inline type="application/ld+json" set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Superfun Games",
-            "url": siteUrl,
-            "description": homeDescription,
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": { "@type": "EntryPoint", "urlTemplate": `${siteUrl}/?search={search_term_string}` },
-              "query-input": "required name=search_term_string"
-            }
-          }).replace(/</g, "\\u003c")} />
+          <script
+            is:inline
+            type="application/ld+json"
+            set:html={jsonLD({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Superfun Games",
+              url: siteUrl,
+              description: homeDescription,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: { "@type": "EntryPoint", urlTemplate: `${siteUrl}/?search={search_term_string}` },
+                "query-input": "required name=search_term_string",
+              },
+            })}
+          />
           <!-- JSON-LD CollectionPage -->
-          <script is:inline type="application/ld+json" set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "Unblocked Games Collection",
-            "description": "A curated collection of classic Flash games and browser games that work without Flash Player. All games run directly in your browser using modern emulation.",
-            "url": siteUrl,
-            "about": { "@type": "Thing", "name": "Classic Browser Games" }
-          }).replace(/</g, "\\u003c")} />
+          <script
+            is:inline
+            type="application/ld+json"
+            set:html={jsonLD({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              name: "Unblocked Games Collection",
+              description:
+                "A curated collection of classic Flash games and browser games that work without Flash Player. All games run directly in your browser using modern emulation.",
+              url: siteUrl,
+              about: { "@type": "Thing", name: "Classic Browser Games" },
+            })}
+          />
           <!-- JSON-LD Organization -->
-          <script is:inline type="application/ld+json" set:html={JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Superfun Games",
-            "url": siteUrl,
-            "description": homeDescription,
-            "foundingDate": "2024",
-            "sameAs": ["https://github.com/noahgsolomon/unblocked-games"]
-          }).replace(/</g, "\\u003c")} />
+          <script
+            is:inline
+            type="application/ld+json"
+            set:html={jsonLD({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Superfun Games",
+              url: siteUrl,
+              description: homeDescription,
+              foundingDate: "2024",
+              sameAs: ["https://github.com/noahgsolomon/unblocked-games"],
+            })}
+          />
         </>
       ) : null
     }

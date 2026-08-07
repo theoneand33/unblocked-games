@@ -8,7 +8,7 @@ const { Game, Path, Image } = Astro.props;
 const altText = `${Game} cover image`;
 ---
 
-<a href={Path} data-astro-prefetch class="game-tile">
+<a href={Path} data-astro-prefetch class="m-5 inline-block text-center no-underline">
   <img
     src={Image}
     alt={altText}
@@ -16,7 +16,7 @@ const altText = `${Game} cover image`;
     height="200"
     loading="lazy"
     decoding="async"
-    class="cover-img rounded-xl hover:scale-105 transition-transform duration-300 hover:shadow-lg active:scale-95 transform"
+    class="h-[200px] w-[300px] rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-lg active:scale-95 transform"
   />
-  <p class="hover:text-black text-gray-800 transition-colors">{Game}</p>
+  <p class="text-gray-800 transition-colors hover:text-black">{Game}</p>
 </a>

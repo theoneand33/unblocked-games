@@ -22,7 +22,6 @@
     "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "~5.9.2"
   }
 }

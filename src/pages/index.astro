@@ -1,12 +1,12 @@
 ---
 import Layout from "../layout/layout.astro";
 import Gametile from "../components/gametile.astro";
-import { gamesMap, defaultGames } from "../data/game-seo";
+import { gamesMap, defaultGames, POPULAR_COUNT } from "../data/game-seo";
 
 const pageTitle =
   "Superfun Games - Unblocked Games for School Chromebook | No Flash Required (2026)";
 
-const popularGames = defaultGames.slice(0, 11);
+const popularGames = defaultGames.slice(0, POPULAR_COUNT);
 ---
 
 <Layout pageTitle={pageTitle} isHome={true}>
@@ -39,7 +39,7 @@ const popularGames = defaultGames.slice(0, 11);
     }
   </div>
 
-  <div class="games-grid">
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[10px]">
     {
       defaultGames.map((slug) => {
         const seo = gamesMap[slug];

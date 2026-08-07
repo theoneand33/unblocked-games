@@ -1,23 +1,5 @@
 @import "tailwindcss";
 
-.cover-img {
-  width: 300px;
-  height: 200px;
-}
-
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
-}
-
-.game-tile {
-  text-align: center;
-  text-decoration: none;
-  margin: 20px;
-  display: inline-block;
-}
-
 /* flash.astro — dynamic states injected by JS */
 .flash-loading {
   background: #f0f0f0;

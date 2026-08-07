@@ -876,6 +876,9 @@ export const gamesMap: Record<string, GameSEO> = {
   ),
 };
 
+export const POPULAR_COUNT = 11;
+export const MORE_GAMES_COUNT = 9;
+
 // homepage display order (most popular first)
 export const defaultGames: string[] = [
   "happy-wheels",
