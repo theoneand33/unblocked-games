@@ -24,4 +24,4 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         with:
-          model: openrouter/deepseek/deepseek-v4-flash
+          model: openrouter/deepseek/deepseek-v4-flash-0731
