@@ -781,7 +781,7 @@ export const gamesMap: Record<string, GameSEO> = {
     "2011",
     "/images/binding-of-isaac-cover.webp",
     true,
-    "Explore randomized dungeons, fight grotesque enemies, and survive in this roguelike classic.",
+    "Explore randomized basements, fight grotesque enemies, and collect items in the original Flash roguelike by Edmund McMillen — the full game playable free in your browser with no download.",
     "/flash/binding-of-isaac.swf",
   ),
   "meat-boy": seo(
