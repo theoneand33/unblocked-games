@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/games/happywheels",
+      "destination": "/games/happy-wheels",
+      "statusCode": 301
+    },
+    {
+      "source": "/games/run3",
+      "destination": "/games/run-3",
+      "statusCode": 301
+    },
+    {
+      "source": "/games/gun-mayhem2",
+      "destination": "/games/gun-mayhem-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/games/geography-game",
+      "destination": "/games/geography-game-usa",
+      "statusCode": 301
+    }
+  ]
+}
