@@ -29,7 +29,7 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
   </p>
 
   <div class="flex flex-wrap gap-2 m-5 mb-4 text-sm">
-    <span class="font-semibold text-gray-700">Popular:</span>
+    <h2 class="font-semibold text-gray-700">Popular:</h2>
     {
       popularGames.map((slug) => (
         <a href={"/games/" + slug} class="text-blue-600 hover:underline"
@@ -39,6 +39,7 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
     }
   </div>
 
+  <h2 class="sr-only">All unblocked games</h2>
   <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[10px]">
     {
       defaultGames.map((slug) => {

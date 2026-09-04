@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /flash/
+Disallow: /pagefind/
 
 # AI / LLM crawler hints
 # https://llmstxt.org/

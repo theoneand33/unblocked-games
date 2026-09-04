@@ -17,7 +17,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      namespaces: { news: false, xhtml: false, image: false, video: false },
+      namespaces: { news: false, xhtml: false, image: true, video: false },
     }),
   ],
   build: {

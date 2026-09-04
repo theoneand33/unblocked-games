@@ -15,7 +15,8 @@ const siteUrl = "https://unblocked-games.vercel.app";
 const seo = slug ? gamesMap[slug] : undefined;
 const Game = seo?.title;
 const isFlash = seo?.isFlash ?? false;
-const todayDate = new Date().toISOString().split("T")[0];
+// ponytail: static date keeps dateModified stable across builds
+const dateModified = "2026-06-10";
 const jsonLD = (data: unknown) => JSON.stringify(data).replace(/</g, "\\u003c");
 
 // Title
@@ -24,27 +25,20 @@ const gameTitle = Game
   : pageTitle || "Superfun Games - Unblocked Games for School Chromebook";
 
 // Description
-const homeDescription = "Play the best free unblocked games online at school on your Chromebook - Happy Wheels, Gun Mayhem 2, Plants vs Zombies, Strike Force Heroes, and more classic Flash games. No Flash plugin or download required, all games work directly in your browser. Updated and working in 2026.";
+const homeDescription = "Play free unblocked games on your school Chromebook - Happy Wheels, Plants vs Zombies, Run 3 and more. No downloads, works in your browser.";
 
 const gameDescription = isHome
   ? homeDescription
   : seo?.description ||
     `Play ${Game} unblocked on your school Chromebook. No Flash plugin or download needed - runs directly in your browser. Fully working 2026 version of this classic game.`;
 
-// Image & other SEO fields
+// Image & other SEO fields — ponytail: webp covers beat SVG for og:image validators
 const gameImage = isHome
-  ? "/images/games_logo_light.svg"
-  : seo?.image || "/images/games_logo_light.svg";
+  ? "/images/happywheelscover.webp"
+  : seo?.image || "/images/happywheelscover.webp";
 
 const gameGenre = seo?.genre || "Game";
 const gameYear = seo?.year || "";
-
-// Keywords
-const homeKeywords = "unblocked games, unblocked games for school chromebook, classic flash games, browser games";
-
-const gameKeywords = isHome
-  ? homeKeywords
-  : `${Game?.toLowerCase()} unblocked, ${Game?.toLowerCase()} online, unblocked games chromebook`;
 
 // URL
 const pageUrl = slug ? `${siteUrl}/games/${slug}` : siteUrl;
@@ -61,8 +55,8 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
     <meta name="generator" content={Astro.generator} />
     <title>{gameTitle}</title>
     <meta name="description" content={gameDescription} />
-    <meta name="keywords" content={gameKeywords} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={pageUrl} />
 
     {
@@ -82,6 +76,9 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
     <meta property="og:title" content={gameTitle} />
     <meta property="og:description" content={gameDescription} />
     <meta property="og:image" content={`${siteUrl}${gameImage}`} />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:image:alt" content={Game ? `${Game} - play unblocked online` : "Superfun Games - unblocked games"} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:site_name" content="Superfun Games" />
     <meta property="og:locale" content="en_US" />
@@ -91,6 +88,7 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
     <meta name="twitter:title" content={gameTitle} />
     <meta name="twitter:description" content={gameDescription} />
     <meta name="twitter:image" content={`${siteUrl}${gameImage}`} />
+    <meta name="twitter:image:alt" content={Game ? `${Game} - play unblocked online` : "Superfun Games - unblocked games"} />
 
     {
       Game && !isHome ? (
@@ -104,8 +102,7 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
               "@type": "BreadcrumbList",
               itemListElement: [
                 { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-                { "@type": "ListItem", position: 2, name: "Games", item: siteUrl },
-                { "@type": "ListItem", position: 3, name: Game, item: pageUrl },
+                { "@type": "ListItem", position: 2, name: Game, item: pageUrl },
               ],
             })}
           />
@@ -132,7 +129,7 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
                 availability: "https://schema.org/InStock",
               },
               applicationCategory: "GameApplication",
-              dateModified: todayDate,
+              dateModified: dateModified,
               ...(gameYear ? { datePublished: gameYear } : {}),
               ...(isFlash ? { requirements: "No Flash plugin needed - runs via Ruffle emulator" } : {}),
             })}
@@ -154,11 +151,6 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
               name: "Superfun Games",
               url: siteUrl,
               description: homeDescription,
-              potentialAction: {
-                "@type": "SearchAction",
-                target: { "@type": "EntryPoint", urlTemplate: `${siteUrl}/?search={search_term_string}` },
-                "query-input": "required name=search_term_string",
-              },
             })}
           />
           <!-- JSON-LD CollectionPage -->
@@ -184,6 +176,7 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
               "@type": "Organization",
               name: "Superfun Games",
               url: siteUrl,
+              logo: `${siteUrl}/images/games_logo_light.svg`,
               description: homeDescription,
               foundingDate: "2024",
               sameAs: ["https://github.com/noahgsolomon/unblocked-games"],
@@ -193,6 +186,7 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
       ) : null
     }
 
+    <link rel="preconnect" href="https://rybbit.theoneand33.dev" />
     <script is:inline defer src="https://rybbit.theoneand33.dev/api/script.js" data-site-id="1ab7f49a0bc5"></script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
     <script is:inline defer src="/_vercel/speed-insights/script.js"></script>
@@ -217,30 +211,31 @@ const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== sl
     </nav>
 
     <main>
+      {Game && !isHome && (
+        <div class="mx-auto max-w-[1200px] px-6 pt-2">
+          <h1 data-pagefind-body class="text-xl font-bold">
+            Play {Game} Unblocked on Chromebook
+          </h1>
+          <div class="py-2">
+            <p class="text-sm text-gray-500 mb-1 line-clamp-3">
+              {gameDescription}
+            </p>
+            <p class="text-xs text-gray-400 font-medium">
+              ✓ {isFlash
+                ? "No Flash plugin required — works on school Chromebooks via Ruffle emulator"
+                : "Works on school Chromebooks — no downloads needed"}
+            </p>
+          </div>
+        </div>
+      )}
       <slot />
     </main>
 
     {Game && !isHome && (
       <div class="mx-auto max-w-[1200px] px-6 pt-2">
-        <h1 data-pagefind-body class="text-xl font-bold">
-          Play {Game} Unblocked on Chromebook
-        </h1>
-
-        <!-- SEO description + badges (line-clamp for clean truncation) -->
-        <div class="py-2">
-          <p class="text-sm text-gray-500 mb-1 line-clamp-3">
-            {gameDescription}
-          </p>
-          <p class="text-xs text-gray-400 font-medium">
-            ✓ {isFlash
-              ? "No Flash plugin required — works on school Chromebooks via Ruffle emulator"
-              : "Works on school Chromebooks — no downloads needed"}
-          </p>
-        </div>
-
         <!-- More Games cross-linking (dynamically generated) -->
-        <nav class="border-t border-gray-200 mt-4 py-4">
-          <p class="text-sm font-semibold mb-2 text-gray-700">More Unblocked Games</p>
+        <nav aria-label="More unblocked games" class="border-t border-gray-200 mt-4 py-4">
+          <h2 class="text-sm font-semibold mb-2 text-gray-700">More Unblocked Games</h2>
           <div class="flex flex-wrap gap-2 text-xs">
             {moreGames.map((s) => (
               <a href={`/games/${s}`} class="text-blue-600 hover:underline">{gamesMap[s].title}</a>
