@@ -30,7 +30,9 @@ const homeDescription = "Play free unblocked games on your school Chromebook - H
 const gameDescription = isHome
   ? homeDescription
   : seo?.description ||
-    `Play ${Game} unblocked on your school Chromebook. No Flash plugin or download needed - runs directly in your browser. Fully working 2026 version of this classic game.`;
+    (Game
+      ? `Play ${Game} unblocked on your school Chromebook. No Flash plugin or download needed - runs directly in your browser. Fully working 2026 version of this classic game.`
+      : pageTitle || homeDescription);
 
 // Image & other SEO fields — ponytail: webp covers beat SVG for og:image validators
 const gameImage = isHome
@@ -43,8 +45,16 @@ const gameYear = seo?.year || "";
 // URL
 const pageUrl = slug ? `${siteUrl}/games/${slug}` : siteUrl;
 
-// More Games cross-linking — curated list of popular games
-const moreGames = defaultGames.slice(0, MORE_GAMES_COUNT).filter((s) => s !== slug); // exclude current game
+// More Games cross-linking — same genre first, then fill from popular
+// ponytail: two passes over defaultGames, no new data structures
+const moreGames = (() => {
+  if (!slug || !seo) return defaultGames.slice(0, MORE_GAMES_COUNT);
+  const rest = defaultGames.filter((s) => s !== slug);
+  return [
+    ...rest.filter((s) => gamesMap[s].genre === seo.genre),
+    ...rest.filter((s) => gamesMap[s].genre !== seo.genre),
+  ].slice(0, MORE_GAMES_COUNT);
+})();
 ---
 
 <html lang="en">
