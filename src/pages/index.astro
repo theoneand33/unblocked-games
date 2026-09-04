@@ -40,7 +40,7 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
   </div>
 
   <h2 class="sr-only">All unblocked games</h2>
-  <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[10px]">
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-[10px]">
     {
       defaultGames.map((slug) => {
         const seo = gamesMap[slug];

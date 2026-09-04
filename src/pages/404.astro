@@ -1,0 +1,14 @@
+---
+import Layout from "../layout/layout.astro";
+const pageTitle = "Page Not Found - Superfun Games";
+---
+
+<Layout pageTitle={pageTitle}>
+  <div class="mx-auto max-w-[600px] p-6 text-center">
+    <h1 class="text-2xl font-bold mb-2">Game not found</h1>
+    <p class="mb-4 text-gray-600">
+      That page doesn't exist. Pick a game below instead.
+    </p>
+    <a href="/" class="text-blue-600 hover:underline">Back to all games</a>
+  </div>
+</Layout>
