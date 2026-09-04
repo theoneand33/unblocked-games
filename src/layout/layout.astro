@@ -30,7 +30,9 @@ const homeDescription = "Play free unblocked games on your school Chromebook - H
 const gameDescription = isHome
   ? homeDescription
   : seo?.description ||
-    `Play ${Game} unblocked on your school Chromebook. No Flash plugin or download needed - runs directly in your browser. Fully working 2026 version of this classic game.`;
+    (Game
+      ? `Play ${Game} unblocked on your school Chromebook. No Flash plugin or download needed - runs directly in your browser. Fully working 2026 version of this classic game.`
+      : pageTitle || homeDescription);
 
 // Image & other SEO fields — ponytail: webp covers beat SVG for og:image validators
 const gameImage = isHome
