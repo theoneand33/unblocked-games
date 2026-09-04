@@ -24,4 +24,4 @@ jobs:
         env:
           META_MODEL_API_KEY: ${{ secrets.META_MODEL_API_KEY }}
         with:
-          model: meta/muse-spark-1.2-contributor
+          model: meta/muse-spark-1.3-contributor
