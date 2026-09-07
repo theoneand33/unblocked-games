@@ -1,0 +1,57 @@
+---
+interface Props {
+  targetId: string;
+}
+
+const { targetId } = Astro.props;
+---
+
+<button
+  type="button"
+  data-fullscreen-for={targetId}
+  aria-live="polite"
+  class="rounded-lg border border-gray-300 bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+>
+  ⛶ Full screen
+</button>
+
+<script is:inline>
+  (function () {
+    function updateLabels() {
+      document.querySelectorAll("[data-fullscreen-for]").forEach(function (btn) {
+        var active =
+          !!document.fullscreenElement &&
+          document.fullscreenElement.id === btn.getAttribute("data-fullscreen-for");
+        btn.textContent = active ? "✕ Exit full screen" : "⛶ Full screen";
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    }
+    document.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest("[data-fullscreen-for]") : null;
+      if (!btn) return;
+      var target = document.getElementById(btn.getAttribute("data-fullscreen-for") || "");
+      if (!target) return;
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(function (err) { console.warn("Exit fullscreen failed:", err); });
+      } else if (target.requestFullscreen) {
+        target.requestFullscreen().catch(function (err) { console.warn("Enter fullscreen failed:", err); });
+      }
+    });
+    // ponytail: re-dispatch resize so existing game resize handlers adapt
+    document.addEventListener("fullscreenchange", function () {
+      updateLabels();
+      window.dispatchEvent(new Event("resize"));
+    });
+    updateLabels();
+  })();
+</script>
+
+<style>
+  :global(#flash-container:fullscreen, #run3-container:fullscreen, #webtris-container:fullscreen) {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

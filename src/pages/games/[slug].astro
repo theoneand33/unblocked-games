@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layout/layout.astro";
 import Flash from "../../components/flash.astro";
+import FullscreenButton from "../../components/fullscreen-button.astro";
 import { gamesMap } from "../../data/game-seo";
 
 export async function getStaticPaths() {
@@ -18,8 +19,13 @@ const seo = gamesMap[slug];
     ) : slug === "run-3" ? (
       <>
         <base href="/games/run3/" />
-        <div id="run3-wrapper" class="text-center h-[96vh] w-full">
-          <div id="openfl-content" class="bg-black w-full h-full" />
+        <div id="run3-container">
+          <div id="run3-wrapper" class="text-center h-[96vh] w-full">
+            <div id="openfl-content" class="bg-black w-full h-full" />
+          </div>
+          <div class="flex justify-center pt-2">
+            <FullscreenButton targetId="run3-container" />
+          </div>
         </div>
         <script src="/games/run3/Run3.js" is:inline></script>
         <script data-astro-rerun is:inline>
@@ -48,15 +54,49 @@ const seo = gamesMap[slug];
         </script>
       </>
     ) : slug === "webtris" ? (
-      <div class="flex justify-center items-center min-h-[80vh] bg-[#010101]">
-        <iframe
-          src="https://theoneand33.github.io/webtris/"
-          class="w-full max-w-[90vw] h-[80vh] border-0"
-          title="Webtris"
-        />
+      <div id="webtris-container">
+        <div id="webtris-wrapper" class="flex justify-center items-center min-h-[80vh] bg-[#010101]">
+          <iframe
+            src="https://theoneand33.github.io/webtris/"
+            class="w-full max-w-[90vw] h-[80vh] border-0"
+            title="Webtris"
+          />
+        </div>
+        <div class="flex justify-center pt-2">
+          <FullscreenButton targetId="webtris-container" />
+        </div>
       </div>
     ) : (
       <p class="p-6 text-center text-gray-600">Game not available.</p>
     )
   }
 </Layout>
+
+<style>
+  /* ponytail: in fullscreen fill the screen, keep game aspect ratio */
+  :global(#run3-container:fullscreen) {
+    height: 100vh;
+  }
+  :global(#run3-container:fullscreen #run3-wrapper) {
+    height: 100%;
+  }
+  :global(#run3-container:fullscreen #openfl-content) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  :global(#run3-container:fullscreen canvas) {
+    width: min(100vw, 133.33vh);
+    height: auto;
+  }
+  :global(#webtris-container:fullscreen) {
+    min-height: 100vh;
+  }
+  :global(#webtris-container:fullscreen #webtris-wrapper) {
+    min-height: 100vh;
+  }
+  :global(#webtris-container:fullscreen iframe) {
+    max-width: 100vw;
+    height: 100vh;
+  }
+</style>
