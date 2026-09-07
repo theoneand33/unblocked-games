@@ -39,6 +39,49 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
     }
   </div>
 
+  <section id="recent" hidden>
+    <h2 class="text-lg font-bold m-5 mb-2">Recently played</h2>
+    <div
+      id="recent-row"
+      class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-[10px]"
+    >
+    </div>
+    <hr class="mx-5 my-4 border-gray-400" />
+  </section>
+  <script is:inline define:vars={{ valid: defaultGames }}>
+    (function () {
+      try {
+        var r = JSON.parse(localStorage.getItem("recently-played") || "[]");
+        if (!Array.isArray(r) || !r.length) return;
+        var sec = document.getElementById("recent");
+        var row = document.getElementById("recent-row");
+        r.slice(0, 10).forEach(function (g) {
+          if (!g || !g.s || !g.t || !g.i || valid.indexOf(g.s) < 0) return;
+          var a = document.createElement("a");
+          a.href = "/games/" + g.s;
+          a.setAttribute("data-astro-prefetch", "");
+          a.className = "m-5 inline-block max-w-full text-center no-underline";
+          var img = document.createElement("img");
+          img.src = g.i;
+          img.alt = g.t + " unblocked - play online free";
+          img.width = 300;
+          img.height = 200;
+          img.loading = "lazy";
+          img.decoding = "async";
+          img.className =
+            "aspect-[3/2] h-auto w-full max-w-[300px] rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-lg active:scale-95 transform";
+          var p = document.createElement("p");
+          p.className = "text-gray-800 transition-colors hover:text-black";
+          p.textContent = g.t;
+          a.appendChild(img);
+          a.appendChild(p);
+          row.appendChild(a);
+        });
+        if (row.children.length) sec.hidden = false;
+      } catch {}
+    })();
+  </script>
+
   <h2 class="sr-only">All unblocked games</h2>
   <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-[10px]">
     {
