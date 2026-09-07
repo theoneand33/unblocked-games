@@ -1,0 +1,54 @@
+---
+interface Props {
+  targetId: string;
+}
+
+const { targetId } = Astro.props;
+---
+
+<button
+  type="button"
+  data-fullscreen-for={targetId}
+  class="rounded-lg border border-gray-300 bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+>
+  ⛶ Full screen
+</button>
+
+<script is:inline>
+  (function () {
+    function updateLabels() {
+      document.querySelectorAll("[data-fullscreen-for]").forEach(function (btn) {
+        var active =
+          !!document.fullscreenElement &&
+          document.fullscreenElement.id === btn.getAttribute("data-fullscreen-for");
+        btn.textContent = active ? "✕ Exit full screen" : "⛶ Full screen";
+      });
+    }
+    document.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest("[data-fullscreen-for]") : null;
+      if (!btn) return;
+      var target = document.getElementById(btn.getAttribute("data-fullscreen-for") || "");
+      if (!target) return;
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(function () {});
+      } else if (target.requestFullscreen) {
+        target.requestFullscreen().catch(function () {});
+      }
+    });
+    // ponytail: re-dispatch resize so existing game resize handlers adapt
+    document.addEventListener("fullscreenchange", function () {
+      updateLabels();
+      window.dispatchEvent(new Event("resize"));
+    });
+    updateLabels();
+  })();
+</script>
+
+<style>
+  :global(:fullscreen) {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

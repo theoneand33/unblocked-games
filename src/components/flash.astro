@@ -1,4 +1,6 @@
 ---
+import FullscreenButton from "./fullscreen-button.astro";
+
 interface Props {
   gamePath: string;
 }
@@ -7,10 +9,22 @@ const { gamePath } = Astro.props;
 ---
 
 <div class="text-center">
-    <div id="flash-player-wrap" data-path={gamePath} class="flex items-center justify-center p-6 min-h-[calc(100vh-100px)] box-border">
+  <div id="flash-player-wrap" data-path={gamePath} class="flex items-center justify-center p-6 min-h-[calc(100vh-100px)] box-border">
     <div class="flash-loading">Loading game...</div>
   </div>
+  <div class="flex justify-center pt-2">
+    <FullscreenButton targetId="flash-player-wrap" />
+  </div>
 </div>
+
+<style>
+  /* ponytail: fullscreen drops page padding so the game can fill the viewport */
+  :global(#flash-player-wrap:fullscreen) {
+    padding: 0;
+    min-height: 100vh;
+    background: #000;
+  }
+</style>
 
 <script src="/ruffle/ruffle.js" is:inline></script>
 <script is:inline>
@@ -55,9 +69,11 @@ const { gamePath } = Astro.props;
       function resize() {
         var vw = window.innerWidth;
         var vh = window.innerHeight;
-        var pad = 32;
-        var headerOffset = 120;
-        var maxW = Math.min(vw - pad * 2, 1040);
+        // ponytail: in fullscreen drop the page chrome offsets and width cap so the game fills the screen
+        var isFs = !!document.fullscreenElement;
+        var pad = isFs ? 0 : 32;
+        var headerOffset = isFs ? 0 : 120;
+        var maxW = isFs ? vw : Math.min(vw - pad * 2, 1040);
         var maxH = vh - headerOffset - pad * 2;
         var w = maxW;
         var h = w / ASPECT_RATIO;
