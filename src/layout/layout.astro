@@ -263,5 +263,23 @@ const moreGames = (() => {
         >
       </p>
     </footer>
+    {
+      seo && slug && (
+        <script define:vars={{ slug, title: seo.title, image: seo.image }} is:inline>
+          try {
+            var k = "recently-played";
+            var r = [];
+            try {
+              r = JSON.parse(localStorage.getItem(k)) || [];
+            } catch {}
+            if (!Array.isArray(r)) r = [];
+            r = [{ s: slug, t: title, i: image }]
+              .concat(r.filter(function (x) { return x && x.s !== slug; }))
+              .slice(0, 10);
+            localStorage.setItem(k, JSON.stringify(r));
+          } catch {}
+        </script>
+      )
+    }
   </body>
 </html>
