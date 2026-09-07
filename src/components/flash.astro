@@ -8,21 +8,25 @@ interface Props {
 const { gamePath } = Astro.props;
 ---
 
-<div class="text-center">
+<div id="flash-container" class="text-center">
   <div id="flash-player-wrap" data-path={gamePath} class="flex items-center justify-center p-6 min-h-[calc(100vh-100px)] box-border">
     <div class="flash-loading">Loading game...</div>
   </div>
   <div class="flex justify-center pt-2">
-    <FullscreenButton targetId="flash-player-wrap" />
+    <FullscreenButton targetId="flash-container" />
   </div>
 </div>
 
 <style>
-  /* ponytail: fullscreen drops page padding so the game can fill the viewport */
-  :global(#flash-player-wrap:fullscreen) {
+  /* ponytail: fullscreen the outer container (game + button) so exit stays visible */
+  :global(#flash-container:fullscreen) {
     padding: 0;
     min-height: 100vh;
     background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 </style>
 
@@ -70,7 +74,7 @@ const { gamePath } = Astro.props;
         var vw = window.innerWidth;
         var vh = window.innerHeight;
         // ponytail: in fullscreen drop the page chrome offsets and width cap so the game fills the screen
-        var isFs = !!document.fullscreenElement;
+        var isFs = !!document.fullscreenElement && document.fullscreenElement.id === "flash-container";
         var pad = isFs ? 0 : 32;
         var headerOffset = isFs ? 0 : 120;
         var maxW = isFs ? vw : Math.min(vw - pad * 2, 1040);
