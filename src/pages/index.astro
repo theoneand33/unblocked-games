@@ -48,7 +48,7 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
     </div>
     <hr class="mx-5 my-4 border-gray-400" />
   </section>
-  <script is:inline>
+  <script is:inline define:vars={{ valid: defaultGames }}>
     (function () {
       try {
         var r = JSON.parse(localStorage.getItem("recently-played") || "[]");
@@ -56,7 +56,7 @@ const popularGames = defaultGames.slice(0, POPULAR_COUNT);
         var sec = document.getElementById("recent");
         var row = document.getElementById("recent-row");
         r.slice(0, 10).forEach(function (g) {
-          if (!g || !g.s || !g.t || !g.i) return;
+          if (!g || !g.s || !g.t || !g.i || valid.indexOf(g.s) < 0) return;
           var a = document.createElement("a");
           a.href = "/games/" + g.s;
           a.setAttribute("data-astro-prefetch", "");
